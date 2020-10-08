@@ -1,1 +1,88 @@
+
+{{!-- IMAGE OF A DONUT --}}
 <h1>Donut App</h1>
+
+<ul>
+{{#each donuts}}
+  {{#unless devoured}}
+  <li>
+    <p>
+      {{donut_name}}
+
+      <button data-id="{{id}}" class="eatDonutBtn">Devour it!</button>
+    </p>
+  </li>
+  {{/unless}}
+  {{/each}}
+</ul>
+
+<ul>
+{{#each donuts}}
+  {{#if devoured}}
+  <li>
+    <p>
+    {{donut_name}}
+
+    </p>
+  </li>
+  {{/if}}
+{{/each}}
+</ul>
+
+<form>
+	<textarea type="text" name="donut"></textarea>
+
+	<button id="newDonutBtn" type="submit">ADD DONUT!</button>
+</form>
+
+
+
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous">
+
+
+
+  $(document).ready(function() {
+//change donut to devoured
+      $("#eatDonutBtn").on("click", function(event) {
+    event.preventDefault();
+    var id = $(this).data("id");
+
+    $.ajax("/api/donuts/" + id, {
+      type: "PUT",
+      data: 
+    }).then(
+      function() {
+        console.log("mmm donuts");
+        window.location = "/";;
+      }
+    );
+  });
+
+
+            // create new donut
+	$("#newDonutBtn").on("click", function(event) {
+		event.preventDefault();
+		const text = $("textarea[name=donut]").val();
+
+		console.log(text);
+
+		$.ajax({
+			method: "POST",
+			url: "/submit",
+			data: {
+				task: text
+			}
+		}).then(function(data) {
+			console.log("SUBMITTED!!");
+			window.location = "/";
+		});
+	});
+  
+
+
+});
+  </script>

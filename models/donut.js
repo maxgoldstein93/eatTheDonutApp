@@ -2,10 +2,25 @@ var orm = require("../config/orm.js");
 
 
 
-orm.selectAll()
-orm.insertOne()
-orm.updateOne()
+
+var donut ={
+
+    selectAll: function(cb){
+        orm.selectAll("donuts", function(result){
+            cb(result);
+        });
+    },
 
 
 
-module.exports = donut.js;
+}
+
+
+
+
+// orm.insertOne("donut", "donut_name")
+// orm.updateOne()
+
+
+
+module.exports = donut;
