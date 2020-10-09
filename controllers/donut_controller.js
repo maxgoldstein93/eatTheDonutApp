@@ -15,8 +15,7 @@ router.get("/", function(req, res) {
   router.post("/api/donuts", function(req, res) {
     let newDonut = req.body.donut_name;
     console.log(newDonut)
-    donut.insertOne("donut_name",[newDonut], function(result) {
-      
+    donut.insertOne([newDonut], function(result) {
       res.json({ id: result.insertId });
     });
   });
