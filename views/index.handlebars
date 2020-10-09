@@ -1,9 +1,9 @@
-
 {{!-- IMAGE OF A DONUT --}}
-<h1>Donut App</h1>
+<h1 class="text-center">Donut App</h1>
+<img  src="/eatTheDonutApp/public/assets/donut.png" alt="Donut" class="center">>
 
 <ul>
-{{#each donuts}}
+  {{#each donuts}}
   {{#unless devoured}}
   <li>
     <p>
@@ -15,74 +15,48 @@
   {{/unless}}
   {{/each}}
 </ul>
+<hr>
 
-<ul>
-{{#each donuts}}
+<ul class="eatADonut float-right">
+  {{#each donuts}}
   {{#if devoured}}
   <li>
     <p>
-    {{donut_name}}
+      {{donut_name}}
 
     </p>
   </li>
   {{/if}}
-{{/each}}
+  {{/each}}
 </ul>
 
-<form>
-	<textarea type="text" name="donut"></textarea>
+<form class="container" >
+  <textarea class="row text-center" type="text" name="donut"></textarea>
 
-	<button id="newDonutBtn" type="submit">ADD DONUT!</button>
+  <button class="mt-3"id="newDonutBtn " type="submit">ADD DONUT!</button>
 </form>
 
-
-
-
-<script
-  src="https://code.jquery.com/jquery-3.5.1.js"
-  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-  crossorigin="anonymous">
-
-
-
-  $(document).ready(function() {
-//change donut to devoured
-      $("#eatDonutBtn").on("click", function(event) {
-    event.preventDefault();
-    var id = $(this).data("id");
-
+<script type="text/javascript">
+  $(".eatDonutBtn").on("click", function (event) {
+    console.log(" mm DONUTS")
+    event.preventDefault()
+    var id = $(this).data("id")
+    console.log(id)
     $.ajax("/api/donuts/" + id, {
       type: "PUT",
-      data: 
+      data: data
     }).then(
-      function() {
-        console.log("mmm donuts");
-        window.location = "/";;
+      function () {
+
+        window.location = "/";
       }
     );
+
+
+
+
   });
 
 
-            // create new donut
-	$("#newDonutBtn").on("click", function(event) {
-		event.preventDefault();
-		const text = $("textarea[name=donut]").val();
 
-		console.log(text);
-
-		$.ajax({
-			method: "POST",
-			url: "/submit",
-			data: {
-				task: text
-			}
-		}).then(function(data) {
-			console.log("SUBMITTED!!");
-			window.location = "/";
-		});
-	});
-  
-
-
-});
-  </script>
+</script>
