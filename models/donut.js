@@ -14,6 +14,11 @@ var donut ={
         orm.insertOne("donuts", "donut_name", newdonut, function(result){
             cb(result);
         });
+    },
+    updateOne: function(devourID, cb){
+        orm.updateOne("donuts", devourID, function(result){
+            cb(result);
+        })
     }
 
 

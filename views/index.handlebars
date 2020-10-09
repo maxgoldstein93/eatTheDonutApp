@@ -1,6 +1,6 @@
 {{!-- IMAGE OF A DONUT --}}
 <h1 class="text-center">Donut App</h1>
-{{!-- <img  src="/assets/donut.png" alt="Donut" class="center">> --}}
+<img  src="/assets/donut.png" alt="Donut" class="center">
 
 <ul>
   {{#each donuts}}
@@ -43,49 +43,4 @@
       <button type="submit">Add Donut!</button>
     </div>
   </form>
-
 </section>
-
-
-<script type="text/javascript">
-  $(".eatDonutBtn").on("click", function (event) {
-    console.log(" mm DONUTS")
-    event.preventDefault()
-    var id = $(this).data("id")
-    console.log(id)
-    $.ajax("/api/donuts/" + id, {
-      type: "PUT",
-      data: data
-    }).then(
-      function () {
-        window.location = "/";
-      }
-    );
-  });
-
-  $(".create-form").on("submit", function (event) {
-    console.log("adding DONUTS")
-    event.preventDefault()
-    var newDonut = {
-      donut_name: $("#newDonut").val().trim(),
-    };
-    console.log(newDonut)
-    $.ajax("/api/donuts", {
-      type: "POST",
-      data: newDonut
-    }).then(
-      function () {
-        console.log("created new Donut");
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
-
-    
-  
-
-
-
-
-</script>
