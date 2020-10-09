@@ -10,6 +10,12 @@ var donut ={
             cb(result);
         });
     },
+    insertOne: function( newdonut, cb){
+        orm.insertOne("donuts", "donut_name", newdonut, function(result){
+            cb(result);
+        });
+    }
+
 
 
 
@@ -18,7 +24,7 @@ var donut ={
 
 
 
-// orm.insertOne("donut", "donut_name")
+
 // orm.updateOne()
 
 

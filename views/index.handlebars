@@ -1,6 +1,6 @@
 {{!-- IMAGE OF A DONUT --}}
 <h1 class="text-center">Donut App</h1>
-<img  src="/eatTheDonutApp/public/assets/donut.png" alt="Donut" class="center">>
+{{!-- <img  src="/assets/donut.png" alt="Donut" class="center">> --}}
 
 <ul>
   {{#each donuts}}
@@ -30,11 +30,22 @@
   {{/each}}
 </ul>
 
-<form class="container" >
-  <textarea class="row text-center" type="text" name="donut"></textarea>
 
-  <button class="mt-3"id="newDonutBtn " type="submit">ADD DONUT!</button>
-</form>
+
+<section class="text-center">
+  <h2>Add a Donut</h2>
+  <form class="create-form">
+
+    <div class="form-group">
+      <input type="text" id="newDonut" name="donut">
+    </div>
+    <div class="text-center">
+      <button type="submit">Add Donut!</button>
+    </div>
+  </form>
+
+</section>
+
 
 <script type="text/javascript">
   $(".eatDonutBtn").on("click", function (event) {
@@ -47,15 +58,33 @@
       data: data
     }).then(
       function () {
-
         window.location = "/";
       }
     );
-
-
-
-
   });
+
+  $(".create-form").on("submit", function (event) {
+    console.log("adding DONUTS")
+    event.preventDefault()
+    var newDonut = {
+      donut_name: $("#newDonut").val().trim(),
+    };
+    console.log(newDonut)
+    $.ajax("/api/donuts", {
+      type: "POST",
+      data: newDonut
+    }).then(
+      function () {
+        console.log("created new Donut");
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+    
+  
+
 
 
 

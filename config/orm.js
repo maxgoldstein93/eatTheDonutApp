@@ -12,18 +12,16 @@ var orm = {
              return cb(result);
         });
     },
-    insertOne: function (whichTable, whichColumn, donutName, cb) {
-        connection.query("Insert Into ?? (??) VALUES ? ;", [whichTable, whichColumn, donutName], function (err, result) {
+    insertOne: function (whichTable, whichColumn, newdonut, cb) {
+        connection.query("Insert Into ?? (??) VALUES (?);", [whichTable, whichColumn, newdonut], function (err, result) {
             if (err) 
                 throw err;
                 console.log("COMING THROUGHHHHH INSERT");
-
-            
-            cb(result)
+           return cb(result);
         })
     },
     updateOne: function(whichTable, condition, cb){
-        connection.query("UPDATE ?? SET devoured=1 WHERE ? ;",[whichTable, condition, cb], function(err,result){
+        connection.query("UPDATE ?? SET devoured=1 WHERE ? ;",[whichTable, condition], function(err,result){
             if (err)
                 throw err;
                 console.log("COMING THROUGHHHHH UPDATE");
