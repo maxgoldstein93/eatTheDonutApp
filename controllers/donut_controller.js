@@ -22,8 +22,6 @@ router.post("/api/donuts", function (req, res) {
 
 router.put("/api/donuts/:id", function (req, res) {
   var eatDonutId = req.params.id;
-  console.log("LINE 25 DONUT CONTROLLER")
-  console.log(eatDonutId);
   donut.updateOne([eatDonutId], function (result) {
     if (result.changedRows === 0) {
       // If no rows were changed, then the ID must not exist, so 404

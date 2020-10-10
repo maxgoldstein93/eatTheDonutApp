@@ -1,6 +1,22 @@
-.center {
-    display: block;
+
+hr.new1{
+  border: 3px solid rgba(237, 25, 88, 0.974);;
+  border-radius: 5px;
+  
+
+}
+body {
+  font-family: 'Permanent Marker', cursive;
+  background-image: url("donutbk.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+  color: rgba(237, 25, 88, 0.974);
+  font-size:20px;
+  /* display: block; */
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-  }
+}
+
+

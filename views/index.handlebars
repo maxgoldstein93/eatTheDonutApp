@@ -1,46 +1,50 @@
-{{!-- IMAGE OF A DONUT --}}
-<h1 class="text-center">Donut App</h1>
-<img  src="/assets/donut.png" alt="Donut" class="center">
-
-<ul>
-  {{#each donuts}}
-  {{#unless devoured}}
-  <li>
-    <p>
-      {{donut_name}}
-
-      <button data-id="{{id}}" class="eatDonutBtn">Devour it!</button>
-    </p>
-  </li>
-  {{/unless}}
-  {{/each}}
-</ul>
-<hr>
-
-<ul class="eatADonut float-right">
-  {{#each donuts}}
-  {{#if devoured}}
-  <li>
-    <p>
-      {{donut_name}}
-
-    </p>
-  </li>
-  {{/if}}
-  {{/each}}
-</ul>
-
-
-
-<section class="text-center">
-  <h2>Add a Donut</h2>
-  <form class="create-form">
-
-    <div class="form-group">
-      <input type="text" id="newDonut" name="donut">
+<h1 class="text-center pt-5 pb-5">Eat a Donut App</h1>
+<hr class="new1">
+<main>
+  <div class="container pt-5">
+    <div class="row ">
+      <div class="col-4-lg col-4-md col-2-sm mr-3 mt-2 mb-2 border">
+        <h4 class="card-title text-center pt-2">Tasty Donut List</h4>
+        <ul>
+          {{#each donuts}}
+          {{#unless devoured}}
+          <li>
+            <div>
+              {{donut_name}}
+            </div>
+            <button data-id="{{id}}" class="eatDonutBtn btn-sm btn-danger">Devour it!</button>
+          </li>
+          {{/unless}}
+          {{/each}}
+        </ul>
+      </div>
+        <div class="col-4-lg col-4-md col-2-sm  mr-2 mt-2 mb-2 border ">
+          <h4 class="card-title text-center pt-2">Tasty Donuts I ate</h4>
+          <ul class="eatADonut">
+            {{#each donuts}}
+            {{#if devoured}}
+            <li>
+              <p>
+                {{donut_name}}
+              </p>
+            </li>
+            {{/if}}
+            {{/each}}
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="text-center">
-      <button type="submit">Add Donut!</button>
-    </div>
-  </form>
-</section>
+      <div class="row text-center ">
+        <div class=" col-8  text center border  mt-3 text center">
+          <h2 class="">Add a Donut</h2>
+          <form class="create-form ">
+            <div class="form-group">
+              <input  type="text" id="newDonut" name="donut">
+            </div>
+            <button type="submit" class="btn-sm btn-danger mb-3">Add Donut!</button>
+          </form>
+        </div>
+      </div>
+    
+  </div>
+</main>
