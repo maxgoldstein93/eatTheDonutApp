@@ -18,6 +18,9 @@ body {
     margin-right: auto;
     width: 50%;
 }
+.donutwidth{
+  min-width: 256.5px
+}
 
 
 
